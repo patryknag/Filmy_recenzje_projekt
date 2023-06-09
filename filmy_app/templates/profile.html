@@ -1,0 +1,8 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h2>Profil recenzenta</h2>
+    <p>Imię: {{ recenzent.name }}</p>
+    <p>Nazwisko: {{ recenzent.surname }}</p>
+    <p>Użytkownik: {{ recenzent.user.username }}</p>
+{% endblock %}

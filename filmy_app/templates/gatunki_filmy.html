@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Gatunki i Filmy</h1>
+
+<table>
+    <tr>
+        <th>Gatunek</th>
+        <th>Filmy</th>
+    </tr>
+    {% for gatunek in gatunki %}
+    <tr>
+        <td>{{ gatunek.name }}</td>
+        <td>
+            {% for film in gatunek.film_set.all %}
+            <a href="{% url 'film' film.id %}">{{ film.title }}</a>
+            {% empty %}
+            Brak filmów w tym gatunku.
+            {% endfor %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

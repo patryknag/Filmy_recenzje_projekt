@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Recenzje</h2>
+
+{% for opinia in opinie %}
+    <h3>Film: {{ opinia.film.title }}</h3>
+    <h3>Recenzent: {{ opinia.recenzent.user.username }}</h3>
+    <p>Opinia: {{ opinia.text }}</p>
+    <p>Ocena: {{ opinia.ocena.ocena }}</p>
+{% empty %}
+    <p>Brak recenzji.</p>
+{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>Opinie i oceny:</h2>
+
+{% for opinia in opinie %}
+    <h3>Recenzent: {{ opinia.recenzent.user.username }}</h3>
+    <p>Opinia: {{ opinia.text }}</p>
+    <p>Ocena: {{ opinia.ocena.ocena }}</p>
+{% empty %}
+    <p>Brak recenzji dla tego filmu.</p>
+{% endfor %}
+
+{% if user.is_authenticated %}
+    <h1>Dodaj opinię i ocenę do filmu</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form_opinia.as_p }}
+        {{ form_ocena.as_p }}
+        <button type="submit">Dodaj opinię i ocenę</button>
+    </form>
+{% else %}
+    <p>Aby dodać opinię, musisz się <a href="{% url 'login' %}">zalogować</a>.</p>
+{% endif %}
+
+{% endblock %}

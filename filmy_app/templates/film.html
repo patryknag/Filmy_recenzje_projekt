@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{{ film.title }}</h1>
+<p>{{ film.description }}</p>
+<p>Reżyser: {{ film.director }}</p>
+<p>Gatunki: {% for gatunek in film.genres.all %}{{ gatunek }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+<p><a href="{% url 'opinia_ocena' film.id %}">Zobacz recenzje tego filmu bądź dokonaj recenzji</a></p>
+{% endblock %}
