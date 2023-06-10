@@ -31,6 +31,7 @@ def film(request, pk):
 
 @login_required
 def opinia_ocena(request, film_id):
+    """Wystawienie opinii i oceny"""
     film = get_object_or_404(Film, pk=film_id)
     opinie = Opinia.objects.filter(film=film)
 
@@ -57,6 +58,7 @@ def opinia_ocena(request, film_id):
 
 
 def rejestracja_recenzenta(request):
+    """ Rejestracja recenzenta"""
     if request.method == "POST":
         form = RejestracjaRecenzentaForm(request.POST)
         if form.is_valid():

@@ -4,18 +4,21 @@ from django.contrib.auth.models import User
 
 
 class OpiniaForm(forms.ModelForm):
+    """Formularz opinii."""
     class Meta:
         model = Opinia
         fields = ['text']
 
 
 class OcenaForm(forms.ModelForm):
+    """Formularz oceny."""
     class Meta:
         model = Ocena
         fields = ['ocena']
 
 
 class RejestracjaRecenzentaForm(forms.ModelForm):
+    """Formularz rejestracji"""
     username = forms.CharField(max_length=150)
     password = forms.CharField(widget=forms.PasswordInput())
     password_confirm = forms.CharField(widget=forms.PasswordInput(), label="Potwierdź hasło")
